@@ -1,11 +1,15 @@
 {
-  "name": "rbxts-transform-guid",
+  "name": "@easy-games/rbxts-transform-guid",
   "version": "0.0.1",
   "description": "",
   "main": "out/index.js",
   "keywords": [],
   "author": "Vorlias",
   "license": "MOT",
+  "scripts": {
+    "compile": "tsc",
+    "prepublishOnly": "npm run compile"
+  },
   "dependencies": {
     "chalk": "^4.1.1",
     "colors": "^1.4.0",
