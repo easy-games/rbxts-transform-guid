@@ -7,8 +7,9 @@ function getRndInteger(min: number, max: number) {
 }
 
 function generateGuid() {
-	const len = getRndInteger(5, 20)
+	const len = getRndInteger(5, 20);
 	const value = crypto.randomBytes(len).toString('hex');
+	return value;
 }
 
 export function hasGuidForLabel(label: string): boolean {
