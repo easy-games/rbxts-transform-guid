@@ -17,7 +17,7 @@ function generateGuid() {
 
 	const noNumbers = value.replace(/[0-9]/g, "");
 	const randomCaps = noNumbers.toLowerCase().split("").map(function(c){
-		return Math.random() < .5? c : c.toUpperCase();
+		return Math.random() < .5 ? c : c.toUpperCase();
 	}).join("");
 
   return randomCaps;
