@@ -7,8 +7,8 @@ function getRndInteger(min: number, max: number) {
 }
 
 function generateGuid() {
-	const len = getRndInteger(5, 20);
-	const iterations = getRndInteger(2, 10);
+	const len = getRndInteger(5, 16);
+	const iterations = getRndInteger(2, 5);
 	let value = "";
 
 	for (let i = 0; i < iterations; i++) {
@@ -17,7 +17,7 @@ function generateGuid() {
 
 	const noNumbers = value.replace(/[0-9]/g, "");
 	const randomCaps = noNumbers.toLowerCase().split("").map(function(c){
-		return Math.random() < .5 ? c : c.toUpperCase();
+		return Math.random() < 0.85 ? c : c.toUpperCase();
 	}).join("");
 
   return randomCaps;
