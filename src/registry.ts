@@ -8,8 +8,19 @@ function getRndInteger(min: number, max: number) {
 
 function generateGuid() {
 	const len = getRndInteger(5, 20);
-	const value = crypto.randomBytes(len).toString('hex');
-	return value;
+	const iterations = getRndInteger(2, 10);
+	let value = "";
+
+	for (let i = 0; i < iterations; i++) {
+		value += Math.random().toString(36).substring(2, len);
+	}
+
+	const noNumbers = value.replace(/[0-9]/g, "");
+	const randomCaps = noNumbers.toLowerCase().split("").map(function(c){
+		return Math.random() < .5? c : c.toUpperCase();
+	}).join("");
+
+  return randomCaps;
 }
 
 export function hasGuidForLabel(label: string): boolean {
