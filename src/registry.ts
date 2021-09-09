@@ -1,6 +1,15 @@
-import { v4 as uuidv4 } from "uuid";
+const crypto = require("crypto");
 
 const labelMap = new Map<string, string>();
+
+function getRndInteger(min: number, max: number) {
+	return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+function generateGuid() {
+	const len = getRndInteger(5, 20)
+	const value = crypto.randomBytes(len).toString('hex');
+}
 
 export function hasGuidForLabel(label: string): boolean {
 	return labelMap.has(label);
@@ -8,7 +17,7 @@ export function hasGuidForLabel(label: string): boolean {
 
 export function updateGuidForLabel(label: string): string {
 	if (labelMap.has(label)) {
-		const value = uuidv4(); // TODO: Guid
+		const value = generateGuid();
 		labelMap.set(label, value);
 		return value;
 	} else {
@@ -21,7 +30,7 @@ export function getGuidForLabel(label: string): string {
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		return labelMap.get(label)!;
 	} else {
-		const value = uuidv4(); // TODO: Guid
+		const value = generateGuid();
 		labelMap.set(label, value);
 		return value;
 	}
